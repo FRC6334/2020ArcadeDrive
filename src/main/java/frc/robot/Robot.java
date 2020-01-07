@@ -42,6 +42,9 @@ public class Robot extends TimedRobot {
     // Drive with arcade drive.
     // That means that the Y axis drives forward
     // and backward, and the X turns left and right.
-    m_robotDrive.arcadeDrive(m_stick.getY(), m_stick.getX());
+    //
+    // JCA 20200106: Multiply getX() by -1 so that the robot turns in the same
+    // direction as the joystick
+    m_robotDrive.arcadeDrive(m_stick.getY(), m_stick.getX()*-1);
   }
 }
