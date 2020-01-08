@@ -10,7 +10,7 @@ package frc.robot;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
-
+import edu.wpi.first.cameraserver.CameraServer;
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 
@@ -34,6 +34,7 @@ public class Robot extends TimedRobot {
     m_leftBackMotor.follow(m_leftFrontMotor);
     m_leftFrontMotor.setInverted(true);
     m_leftBackMotor.setInverted(true); 
+    CameraServer.getInstance().startAutomaticCapture();
   }
 
   @Override
@@ -44,6 +45,6 @@ public class Robot extends TimedRobot {
     //
     // JCA 20200106: Multiply getX() by -1 so that the robot turns in the same
     // direction as the joystick
-    m_robotDrive.arcadeDrive(m_stick.getY(), m_stick.getX()*-1);
+    m_robotDrive.arcadeDrive((m_stick.getX()*-1*0.5), (m_stick.getY()*0.5));
   }
 }
